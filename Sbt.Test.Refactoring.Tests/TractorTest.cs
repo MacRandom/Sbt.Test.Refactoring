@@ -68,7 +68,7 @@ namespace Sbt.Test.Refactoring.Tests
         [Test]
         public void TestShouldTurnAndMoveInTheRightDirection()
         {
-            Tractor tractor = new Tractor();
+            Tractor tractor = new Tractor(3, 3);
 
             List<ICommand> commands = new List<ICommand>
             {
@@ -80,20 +80,20 @@ namespace Sbt.Test.Refactoring.Tests
             invoker.SetCommand(new MacroCommand(commands));
 
             invoker.ExecuteCommand();
-            Assert.AreEqual(1, tractor.GetPositionX);
-            Assert.AreEqual(0, tractor.GetPositionY);
+            Assert.AreEqual(4, tractor.GetPositionX);
+            Assert.AreEqual(3, tractor.GetPositionY);
 
             invoker.ExecuteCommand();
-            Assert.AreEqual(1, tractor.GetPositionX);
-            Assert.AreEqual(-1, tractor.GetPositionY);
+            Assert.AreEqual(4, tractor.GetPositionX);
+            Assert.AreEqual(2, tractor.GetPositionY);
 
             invoker.ExecuteCommand();
-            Assert.AreEqual(0, tractor.GetPositionX);
-            Assert.AreEqual(-1, tractor.GetPositionY);
+            Assert.AreEqual(3, tractor.GetPositionX);
+            Assert.AreEqual(2, tractor.GetPositionY);
 
             invoker.ExecuteCommand();
-            Assert.AreEqual(0, tractor.GetPositionX);
-            Assert.AreEqual(0, tractor.GetPositionY);
+            Assert.AreEqual(3, tractor.GetPositionX);
+            Assert.AreEqual(3, tractor.GetPositionY);
         }
 
         [Test]
