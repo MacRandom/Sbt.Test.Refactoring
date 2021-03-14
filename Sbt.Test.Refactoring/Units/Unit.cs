@@ -43,19 +43,19 @@ namespace Sbt.Test.Refactoring
 
         protected void SetPositionX(int x)
         {
-            this._position.X = x;
+            _position.X = x;
             CheckIsInDitch();
         }
 
         protected void SetPositionY(int y)
         {
-            this._position.Y = y;
+            _position.Y = y;
             CheckIsInDitch();
         }
 
         protected void SetOrientation(OrientationType orientationType)
         {
-            this._orientationType = orientationType;
+            _orientationType = orientationType;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Sbt.Test.Refactoring
         /// </summary>
         private void CheckIsInDitch()
         {
-            if (GetPositionX >= _field.Width || 
+            if (GetPositionX >= _field.Width ||
                 GetPositionY >= _field.Height ||
                 GetPositionX < 0 ||
                 GetPositionY < 0)
