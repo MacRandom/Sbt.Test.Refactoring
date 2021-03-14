@@ -18,7 +18,7 @@ namespace Sbt.Test.Refactoring
         /// <param name="y">The vertical position of the unit.</param>
         protected Unit(int x, int y)
         {
-            _position = new Point(0, 0);
+            _position = new Point(x, y);
         }
 
         public OrientationType OrientationType => _orientationType;
