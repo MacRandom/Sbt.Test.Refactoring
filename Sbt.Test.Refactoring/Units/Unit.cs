@@ -63,7 +63,10 @@ namespace Sbt.Test.Refactoring
         /// </summary>
         private void CheckIsInDitch()
         {
-            if (this.GetPositionX > this._field.Width || this.GetPositionY > this._field.Height)
+            if (GetPositionX >= _field.Width || 
+                GetPositionY >= _field.Height ||
+                GetPositionX < 0 ||
+                GetPositionY < 0)
             {
                 throw new UnitInDitchException();
             }
