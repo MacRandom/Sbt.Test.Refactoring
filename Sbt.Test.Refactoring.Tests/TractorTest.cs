@@ -96,27 +96,35 @@ namespace Sbt.Test.Refactoring.Tests
         }
 
         [Test]
-        public void TestShouldThrowExceptionIfFallsOffPlateau()
+        [TestCase(OrientationType.North)]
+        [TestCase(OrientationType.East)]
+        [TestCase(OrientationType.West)]
+        [TestCase(OrientationType.South)]
+        public void TestShouldThrowExceptionIfFallsOffPlateau(OrientationType orientationType)
         {
             Tractor tractor = new Tractor();
             Invoker invoker = new Invoker();
 
-            invoker.SetCommand(new MoveForwardsCommand(tractor));
-
-            invoker.ExecuteCommand();
-            invoker.ExecuteCommand();
-            invoker.ExecuteCommand();
-            invoker.ExecuteCommand();
-            invoker.ExecuteCommand();
+            invoker.SetCommand(new MoveTurnCommand(tractor));
+            while (tractor.OrientationType != orientationType)
+                invoker.ExecuteCommand();
 
             try
             {
-                invoker.ExecuteCommand();
-                Assert.Fail("Tractor is expected to fall off the plateau");
+                int moveCount = Consts.FieldHeight > Consts.FieldWidth ? Consts.FieldHeight : Consts.FieldWidth;
+                moveCount++;
+
+                invoker.SetCommand(new MoveForwardsCommand(tractor));
+
+                for (int i = 0; i < moveCount; i++)
+                    invoker.ExecuteCommand();
             }
-            catch (UnitInDitchException ex)
+            catch (UnitInDitchException exc)
             {
+                return;
             }
+
+            Assert.Fail("Tractor is expected to fall off the plateau");
         }
     }
 }
