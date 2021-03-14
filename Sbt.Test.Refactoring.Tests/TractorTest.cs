@@ -15,6 +15,7 @@ namespace Sbt.Test.Refactoring.Tests
             List<ICommand> commands = new List<ICommand>
             {
                 new MoveForwardsCommand(tractor),
+                new MoveForwardsCommand(tractor),
                 new MoveForwardsCommand(stone),
                 new MoveForwardsCommand(wind)
             };
@@ -24,9 +25,9 @@ namespace Sbt.Test.Refactoring.Tests
             invoker.ExecuteCommand();
 
             Assert.AreEqual(0, tractor.GetPositionX);
-            Assert.AreEqual(1, tractor.GetPositionY);
-            Assert.AreEqual(0, stone.GetPositionX);
-            Assert.AreEqual(0, stone.GetPositionY);
+            Assert.AreEqual(2, tractor.GetPositionY);
+            Assert.AreEqual(2, stone.GetPositionX);
+            Assert.AreEqual(2, stone.GetPositionY);
         }
 
 
