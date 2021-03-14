@@ -1,19 +1,17 @@
-﻿using System;
-
-namespace Sbt.Test.Refactoring
+﻿namespace Sbt.Test.Refactoring
 {
     public class MoveTurnCommand : ICommand
     {
-        Unit unit;
+        private readonly Unit _unit;
 
         public MoveTurnCommand(Unit unit)
         {
-            this.unit = unit;
+            _unit = unit;
         }
 
         public void Execute()
         {
-            unit.MoveTurn();
+            _unit.MoveTurn();
         }
     }
 }

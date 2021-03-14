@@ -4,16 +4,16 @@ namespace Sbt.Test.Refactoring
 {
     public class MacroCommand : ICommand
     {
-        List<ICommand> commands;
+        private readonly List<ICommand> _commands;
 
         public MacroCommand(List<ICommand> commands)
         {
-            this.commands = commands;
+            _commands = commands;
         }
 
         public void Execute()
         {
-            foreach (ICommand command in commands)
+            foreach (ICommand command in _commands)
             {
                 command.Execute();
             }

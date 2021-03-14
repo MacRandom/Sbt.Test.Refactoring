@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sbt.Test.Refactoring
+﻿namespace Sbt.Test.Refactoring
 {
     public interface ICommand
     {

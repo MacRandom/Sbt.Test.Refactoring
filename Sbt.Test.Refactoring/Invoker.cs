@@ -1,20 +1,18 @@
-﻿using System;
-
-namespace Sbt.Test.Refactoring
+﻿namespace Sbt.Test.Refactoring
 {
     public class Invoker
     {
-        ICommand command;
+        private ICommand _command;
 
         public void SetCommand(ICommand command)
         {
-            this.command = command;
+            _command = command;
         }
 
         public void ExecuteCommand()
         {
-            if (command != null)
-                command.Execute();
+            if (_command != null)
+                _command.Execute();
         }
     }
 }

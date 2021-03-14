@@ -1,19 +1,17 @@
-﻿using System;
-
-namespace Sbt.Test.Refactoring
+﻿namespace Sbt.Test.Refactoring
 {
     public class MoveForwardsCommand : ICommand
     {
-        Unit unit;
+        private readonly Unit _unit;
 
         public MoveForwardsCommand(Unit unit)
         {
-            this.unit = unit;
+            _unit = unit;
         }
 
         public void Execute()
         {
-            unit.MoveForwards();
+            _unit.MoveForwards();
         }
     }
 }
