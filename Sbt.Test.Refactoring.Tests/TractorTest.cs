@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Sbt.Test.Refactoring.Tests
 {
-    [TestClass]
     public class TractorTest
     {
-        [TestMethod]
+        [Test]
         public void TestMacroMoveForwardsCommand()
         {
             Tractor tractor = new Tractor();
@@ -31,7 +30,7 @@ namespace Sbt.Test.Refactoring.Tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestShouldMoveForward()
         {
             Tractor tractor = new Tractor();
@@ -44,7 +43,7 @@ namespace Sbt.Test.Refactoring.Tests
             Assert.AreEqual(1, tractor.GetPositionY);
         }
 
-        [TestMethod]
+        [Test]
         public void TestShouldTurn()
         {
             Tractor tractor = new Tractor();
@@ -65,7 +64,7 @@ namespace Sbt.Test.Refactoring.Tests
             Assert.AreEqual(OrientationType.North, tractor.OrientationType);
         }
 
-        [TestMethod]
+        [Test]
         public void TestShouldTurnAndMoveInTheRightDirection()
         {
             Tractor tractor = new Tractor();
@@ -78,7 +77,7 @@ namespace Sbt.Test.Refactoring.Tests
 
             Invoker invoker = new Invoker();
             invoker.SetCommand(new MacroCommand(commands));
-            
+
             invoker.ExecuteCommand();
             Assert.AreEqual(1, tractor.GetPositionX);
             Assert.AreEqual(0, tractor.GetPositionY);
@@ -96,12 +95,12 @@ namespace Sbt.Test.Refactoring.Tests
             Assert.AreEqual(0, tractor.GetPositionY);
         }
 
-        [TestMethod]
+        [Test]
         public void TestShouldThrowExceptionIfFallsOffPlateau()
         {
             Tractor tractor = new Tractor();
             Invoker invoker = new Invoker();
-            
+
             invoker.SetCommand(new MoveForwardsCommand(tractor));
 
             invoker.ExecuteCommand();
